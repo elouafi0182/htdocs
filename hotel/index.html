@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+
+<style>
+
+    </style>
+<body>
+
+<div class="topnav" id="myTopnav">
+    <a href="index.html">Home</a>
+    <a href="rooms.html">Rooms</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.php" style="float:right;" class="active">Login</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+<!-- Header with image -->
+<header class="bgimg w3-display-container " id="home">
+
+    <div class="form-group">
+        <div class="container">
+            <form action="#"  class="simple-form">
+                <label for="check-in"></label> <!-- <input type="textfield" class="form-control" id="check-in" placeholder="12.20.2014"> -->
+                <input type="text"  class="form-control" id="start-date" name="start-date" placeholder="Check In" required>
+                <label for="check-out"></label> <!-- <input type="textfield" class="form-control" id="check-out" placeholder="12.27.2014"> -->
+                <input type="text" class="form-control" id="end-date" name="end-date" placeholder="Check Out" required>
+                <input type="number" placeholder="Adults ">
+                <input type="number" placeholder="Children">
+                <button class="button1">Check Availability</button>
+            </form>
+        </div>
+    </div>
+
+</header>
+<br>
+<div class="w3-container">
+    <h3>Our Hotels</h3>
+    <h6>You can find our hotels anywhere in the world:</h6>
+</div>
+
+<div class="w3-row-padding w3-padding-16 w3-text-white w3-large">
+    <div class="w3-half w3-margin-bottom">
+        <div class="w3-display-container">
+            <img src="londonhotel.jpg" alt="London" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">London</span>
+        </div>
+    </div>
+    <div class="w3-half">
+        <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half w3-margin-bottom">
+                <div class="w3-display-container">
+                    <img src="newyorkhotel.jpg" alt="New York" style="width:100%">
+                    <span class="w3-display-bottomleft w3-padding">New York</span>
+                </div>
+            </div>
+            <div class="w3-half w3-margin-bottom">
+                <div class="w3-display-container">
+                    <img src="amsterdamhotel.jpg" alt="Amsterdam" style="width:100%">
+                    <span class="w3-display-bottomleft w3-padding">Amsterdam</span>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half w3-margin-bottom">
+                <div class="w3-display-container">
+                    <img src="dubaihotel.jpg" alt="Dubai" style="width:100%">
+                    <span class="w3-display-bottomleft w3-padding">Dubai</span>
+                </div>
+            </div>
+            <div class="w3-half w3-margin-bottom">
+                <div class="w3-display-container">
+                    <img src="parishotel.jpg" alt="Paris" style="width:100%">
+                    <span class="w3-display-bottomleft w3-padding">Paris</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $( document ).ready(function() {
+        $( function() {
+            var dateToday = new Date();
+            var dates = $("#start-date, #end-date").datepicker({
+                defaultDate: "+2d",
+                changeMonth: true,
+                numberOfMonths: 1,
+                minDate: dateToday,
+                onSelect: function(selectedDate) {
+                    var option = this.id == "start-date" ? "minDate" : "maxDate",
+                        instance = $(this).data("datepicker"),
+                        date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+<footer>
+    &copy; - 2018
+</footer>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<title>Hotel </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<style>
+    html{
+        list-style-type: none;
+    }
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<div class="topnav" id="myTopnav">
+    <a href="index.html">Home</a>
+    <a href="rooms.html">Rooms</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.php" style="float:right;" class="active">Login</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+<!-- Header with image -->
+<header>
+    <img src="hotel.png" alt="hotel" class="responsive">
+</header>
+
+<!-- Work Row -->
+<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+
+
+    <div class="w3-quarter">
+        <div class="w3-card w3-white">
+            <img src="kamer1.jpg" alt="Snow" style="width:100%">
+            <div class="w3-container">
+                <h3>1 King Size Bed</h3>
+                <h4>$70</h4>
+                <p>Internet access</p>
+                <p>37" flat screen television</p>
+                <p>Work desk</p>
+                <li class="w3-theme-l5 w3-padding-24">
+                   <center><button class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Sign Up</button></center>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-quarter">
+        <div class="w3-card w3-white">
+            <img src="kamer2.jpg" alt="Lights" style="width:100%">
+            <div class="w3-container">
+                <h3>2 Queens Size Bed</h3>
+                <h4>$50</h4>
+                <p>Internet access</p>
+                <p>Bathrobe</p>
+                <p>Minibar</p>
+                <li class="w3-theme-l5 w3-padding-24">
+                    <center><button class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Sign Up</button></center>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-quarter">
+        <div class="w3-card w3-white">
+            <img src="kamer3.jpg" alt="Lights" style="width:100%">
+            <div class="w3-container">
+                <h3>1 Queens Size Bed</h3>
+                <h4>$65</h4>
+                <p>Internet access</p>
+                <p>Separtate Bathrobe</p>
+                <p>Living room</p>
+                <li class="w3-theme-l5 w3-padding-24">
+                    <center><button class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Sign Up</button></center>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-quarter">
+        <div class="w3-card w3-white">
+            <img src="kamer4.jpg" alt="Mountains" style="width:100%">
+            <div class="w3-container">
+                <h3>1 King Size Bed</h3>
+                <h4>$70</h4>
+                <p>37" flat screen television</p>
+                <p>Internet access</p>
+                <p>Bathrobe</p>
+                <li class="w3-theme-l5 w3-padding-24">
+                    <center><button class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Sign Up</button></center>
+                </li>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- Footer -->
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+    <h5>Find Us On</h5>
+    <div class="w3-xlarge w3-padding-16">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+    </div>
+</footer>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+</body>
+</html>

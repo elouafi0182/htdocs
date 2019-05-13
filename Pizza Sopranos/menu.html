@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="nl" >
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="gvzs.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="Pizza_Margherita-913.png">
+    <title>Pizza Sopranos</title>
+    <script>
+        window.console = window.console || function(t) {};
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+<style>
+</style>
+</head>
+<div class="container">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
+<img src="logo3.png" style="display: block;
+    margin-left: auto;
+    margin-right: auto;
+margin-top: -4%">
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <img src="korting.png" style="width:100%">
+
+    </div>
+
+    <div class="mySlides fade">
+        <img src="bezorgen.png" style="width:100%">
+    </div>
+
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+</div>
+<script>
+    var Check = alert("U moet eerst uw keuze maken voor bestellen of afhalen.");
+    if (Check === true) {
+        location.href = "index.html";
+    } else {
+        location.href = "index.html";
+    }
+</script>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
+<body translate="yes" >
+    <div class="shopping-cart" style="margin-top: 5%">
+        <h1>Pizza's</h1>
+        <hr/>
+        <div class="column-labels">
+            <label class="product-image">Image</label>
+            <label class="product-details">Product</label>
+            <label class="product-price">Prijs</label>
+            <label class="product-quantity">Aantal</label>
+            <label class="product-removal">Verwijderen</label>
+            <label class="product-line-price">Totaal</label>
+        </div>
+
+        <div class="product">
+            <div class="product-image">
+                <img src="Tonijn_Pizza-1444.png">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Tonno 30 CM</div>
+                <p class="product-description">Pizza met tomatensaus, mozzarella, pole & line tonijn, kappertjes en rode ui. Met boterzachte knoflookolie op de rand van de pizza.</p>
+            </div>
+            <div class="product-price">6.99</div>
+            <div class="product-quantity">
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Verwijderen
+                </button>
+            </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+
+        <div class="product">
+            <div class="product-image">
+                <img src="Pizza_Margherita-913.png">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Margherita 30 CM</div>
+                <p class="product-description">Pizza met tomatensaus en mozzarella. Met boterzachte knoflookolie op de rand van de pizza. Tip! Ook lekker met oregano.</p>
+            </div>
+            <div class="product-price">4.99</div>
+            <div class="product-quantity">
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Verwijderen
+                </button>
+            </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="Pizza_Hawaii-916.png">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Hawaii 30 CM</div>
+                <p class="product-description">Pizza met tomatensaus, mozzarella, ham (kalkoen), ananas en extra mozzarella. Met boterzachte knoflookolie op de rand van de pizza.</p>
+            </div>
+            <div class="product-price">11.99</div>
+            <div class="product-quantity">
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Verwijderen
+                </button>
+            </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="Californian_Veggie_Pizza-2388.png">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Californian Veggie 30 CM</div>
+                <p class="product-description">Vegetarische pizza met tomatensaus, mozzarella, rode ui, paprika, champignons, olijven en extra mozzarella. Met boterzachte knoflookolie op de rand van de pizza.</p>
+            </div>
+            <div class="product-price">9.99</div>
+            <div class="product-quantity">
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Verwijderen
+                </button>
+            </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="BBQ_Chicken_Pizza_-1396.png">
+            </div>
+            <div class="product-details">
+                <div class="product-title">BBQ Chicken 30 CM</div>
+                <p class="product-description">Pizza met BBQ saus, mozzarella, grilled chicken, paprika, rode ui, mais en knoflookolie op de rand</p>
+            </div>
+            <div class="product-price">9.99</div>
+            <div class="product-quantity">
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Verwijderen
+                </button>
+            </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+        <h1>Dranken</h1>
+        <hr/>
+        <div class="product">
+            <div class="product-image">
+                <img src="Coca-cola.png">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Coca-cola </div>
+                <p class="product-description"></p>
+            </div>
+            <div class="product-price">1.50</div>
+            <div class="product-quantity">
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Verwijderen
+                </button>
+            </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="Fanta.png">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Fanta</div>
+                    <p class="product-description"></p>
+                </div>
+                <div class="product-price">1.50</div>
+                <div class="product-quantity">
+                    <input type="number" value="0" min="0">
+                </div>
+                <div class="product-removal">
+                    <button class="remove-product">
+                        Verwijderen
+                    </button>
+                </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="ayran.png">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Ayran</div>
+                <p class="product-description"></p>
+            </div>
+            <div class="product-price">2.00</div>
+            <div class="product-quantity">
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Verwijderen
+                </button>
+            </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+        <div class="product">
+            <div class="product-image">
+                <img src="red%20bull.png">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Red Bull</div>
+                <p class="product-description"></p>
+            </div>
+            <div class="product-price">2.50</div>
+            <div class="product-quantity">
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Verwijderen
+                </button>
+            </div>
+            <div class="product-line-price">0,00</div>
+        </div>
+    </div>
+        <div class="totals">
+            <div class="totals-item">
+                <label>Subtotaal</label>
+                <div class="totals-value" id="cart-subtotal">0,00</div>
+            </div>
+            <div class="totals-item">
+                <label>Korting (10%)</label>
+                <div class="totals-value" id="cart-tax">0.00</div>
+            </div>
+            <div class="totals-item">
+                <label>Bezorgkosten</label>
+                <div class="totals-value" id="cart-shipping">0.00</div>
+            </div>
+            <div class="totals-item totals-item-total">
+                <label>Totaal</label>
+                <div class="totals-value" id="cart-total">0.00</div>
+            </div>
+        </div>
+
+    <input type="submit" name="submit" value="Bestel" />
+
+
+    <script src="//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+
+    <script >
+        /* Set rates + misc */
+        var taxRate = 0.10;
+        var shippingRate = 2.50;
+        var fadeTime = 300;
+
+
+        /* Assign actions */
+        $('.product-quantity input').change( function() {
+            updateQuantity(this);
+        });
+
+        $('.product-removal button').click( function() {
+            removeItem(this);
+        });
+
+
+        /* Recalculate cart */
+        function recalculateCart()
+        {
+            var subtotal = 0;
+
+            /* Sum up row totals */
+            $('.product').each(function () {
+                subtotal += parseFloat($(this).children('.product-line-price').text());
+            });
+
+            /* Calculate totals */
+            var tax = subtotal * taxRate;
+            var shipping = (subtotal < 0 ? shippingRate : 0);
+            var total = subtotal - tax + shipping;
+
+
+            /* Update totals display */
+            $('.totals-value').fadeOut(fadeTime, function() {
+                $('#cart-subtotal').html(subtotal.toFixed(2));
+                $('#cart-tax').html(tax.toFixed(2));
+                $('#cart-shipping').html(shipping.toFixed(2));
+                $('#cart-total').html(total.toFixed(2));
+
+                if(total == 0){
+                    $('.checkout').fadeOut(fadeTime);
+                }else{
+                    $('.checkout').fadeIn(fadeTime);
+                }
+                $('.totals-value').fadeIn(fadeTime);
+            });
+        }
+
+
+        /* Update quantity */
+        function updateQuantity(quantityInput)
+        {
+            /* Calculate line price */
+            var productRow = $(quantityInput).parent().parent();
+            var price = parseFloat(productRow.children('.product-price').text());
+            var quantity = $(quantityInput).val();
+            var linePrice = price * quantity;
+
+            /* Update line price display and recalc cart totals */
+            productRow.children('.product-line-price').each(function () {
+                $(this).fadeOut(fadeTime, function() {
+                    $(this).text(linePrice.toFixed(2));
+                    recalculateCart();
+                    $(this).fadeIn(fadeTime);
+                });
+            });
+        }
+
+
+        /* Remove item from cart */
+        function removeItem(removeButton)
+        {
+            /* Remove row from DOM and recalc cart total */
+            var productRow = $(removeButton).parent().parent();
+            productRow.slideUp(fadeTime, function() {
+                productRow.remove();
+                recalculateCart();
+            });
+        }
+        //# sourceURL=pen.js
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

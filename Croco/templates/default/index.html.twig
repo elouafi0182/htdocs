@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+{% block subtitle%} CrocoShop {%endblock%}
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div style="margin-top:100px" class="example-wrapper">
+{%if app.user%}
+{%if is_granted('ROLE_ADMIN ')%}
+im a admin
+{%elseif is_granted('ROLE_USER')%}
+im a user
+{%endif%}
+{%else%}
+ <p>IM a guest</p>
+{%endif%}
+
+</div>
+{% endblock %}
