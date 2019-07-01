@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Reserveringen;
-use App\Form\ReserveringenType;
+use App\Form\Reserveringen1Type;
 use App\Repository\ReserveringenRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class ReserveringenController extends AbstractController
     public function new(Request $request): Response
     {
         $reserveringen = new Reserveringen();
-        $form = $this->createForm(ReserveringenType::class, $reserveringen);
+        $form = $this->createForm(Reserveringen1Type::class, $reserveringen);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class ReserveringenController extends AbstractController
      */
     public function edit(Request $request, Reserveringen $reserveringen): Response
     {
-        $form = $this->createForm(ReserveringenType::class, $reserveringen);
+        $form = $this->createForm(Reserveringen1Type::class, $reserveringen);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

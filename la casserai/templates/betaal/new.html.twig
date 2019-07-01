@@ -3,9 +3,12 @@
 {% block title %}New Betaal{% endblock %}
 
 {% block body %}
+<div class="container">
+
     <h1>Create new Betaal</h1>
 
     {{ include('betaal/_form.html.twig') }}
 
     <a href="{{ path('betaal_index') }}">back to list</a>
+    </div>
 {% endblock %}

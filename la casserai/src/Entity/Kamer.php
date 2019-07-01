@@ -38,10 +38,16 @@ class Kamer
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reserveringen", mappedBy="room_id")
+     */
+    private $reserveringens;
+
     public function __construct()
     {
         $this->extra = new ArrayCollection();
         $this->image = new ArrayCollection();
+        $this->reserveringens = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,5 +129,41 @@ class Kamer
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Reserveringen[]
+     */
+    public function getReserveringens(): Collection
+    {
+        return $this->reserveringens;
+    }
+
+    public function addReserveringen(Reserveringen $reserveringen): self
+    {
+        if (!$this->reserveringens->contains($reserveringen)) {
+            $this->reserveringens[] = $reserveringen;
+            $reserveringen->setRoomId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReserveringen(Reserveringen $reserveringen): self
+    {
+        if ($this->reserveringens->contains($reserveringen)) {
+            $this->reserveringens->removeElement($reserveringen);
+            // set the owning side to null (unless already changed)
+            if ($reserveringen->getRoomId() === $this) {
+                $reserveringen->setRoomId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 }

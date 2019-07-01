@@ -20,6 +20,7 @@ class ExtrasController extends AbstractController
      */
     public function index(ExtrasRepository $extrasRepository): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
         return $this->render('extras/index.html.twig', [
             'extras' => $extrasRepository->findAll(),
         ]);

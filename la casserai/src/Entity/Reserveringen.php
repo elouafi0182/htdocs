@@ -36,6 +36,17 @@ class Reserveringen
      */
     private $betaalmethode;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Kamer", inversedBy="reserveringens")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $room_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reserveringens")
+     */
+    private $user_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +96,30 @@ class Reserveringen
     public function setBetaalmethode(string $betaalmethode): self
     {
         $this->betaalmethode = $betaalmethode;
+
+        return $this;
+    }
+
+    public function getRoomId(): ?Kamer
+    {
+        return $this->room_id;
+    }
+
+    public function setRoomId(?Kamer $room_id): self
+    {
+        $this->room_id = $room_id;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(?User $user_id): self
+    {
+        $this->user_id = $user_id;
 
         return $this;
     }

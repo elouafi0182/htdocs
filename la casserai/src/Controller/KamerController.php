@@ -20,6 +20,9 @@ class KamerController extends AbstractController
      */
     public function index(KamerRepository $kamerRepository): Response
     {
+
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
+        
         return $this->render('kamer/index.html.twig', [
             'kamers' => $kamerRepository->findAll(),
         ]);

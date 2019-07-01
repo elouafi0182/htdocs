@@ -3,6 +3,8 @@
 {% block title %}Extras{% endblock %}
 
 {% block body %}
+<div class="container">
+
     <h1>Extras</h1>
 
     <table class="table">
@@ -27,4 +29,5 @@
     <a href="{{ path('extras_edit', {'id': extra.id}) }}">edit</a>
 
     {{ include('extras/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

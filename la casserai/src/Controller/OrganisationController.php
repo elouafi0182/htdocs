@@ -20,6 +20,7 @@ class OrganisationController extends AbstractController
      */
     public function index(OrganisationRepository $organisationRepository): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
         return $this->render('organisation/index.html.twig', [
             'organisations' => $organisationRepository->findAll(),
         ]);

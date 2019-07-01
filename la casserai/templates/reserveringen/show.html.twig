@@ -4,6 +4,7 @@
 
 {% block body %}
     <h1>Reserveringen</h1>
+<div class="container">
 
     <table class="table">
         <tbody>
@@ -35,4 +36,5 @@
     <a href="{{ path('reserveringen_edit', {'id': reserveringen.id}) }}">edit</a>
 
     {{ include('reserveringen/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

@@ -18,6 +18,9 @@
             <li class="nav-item active">
                 <a class="nav-item nav-link active" href="{{ path('default') }}">Home <span class="sr-only">(current)</span></a>      </li>
             </li>
+            <li>
+        <a class="nav-link" href="{{ path('see_rooms') }}">See Rooms</a>
+        </li>
             {% if is_granted("ROLE_ADMIN") %} 
 
               <li class="nav-item dropdown">

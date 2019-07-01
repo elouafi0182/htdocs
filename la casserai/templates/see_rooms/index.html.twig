@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}See Rooms{% endblock %}
+
+{% block body %}
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+          <h1 class="display-4">Rooms</h1>
+        </div>
+
+<div class="container">
+    <div class="row">
+        {% for kamer in kamers %}
+         <div class="col-md-4" style="margin-top:20px;margin-bottom:20px;">
+          <div class="card">
+            {% for image in kamer.image %}
+            <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.imageName }}" class="card-img-top" style="height: 225px; width: 100%; display: block;">
+          {% endfor %}
+            <div class="card-body">
+              <h5 class="pricing-card-title">€ {{ kamer.prijs }} <small class="text-muted">/ a day</small></h5>
+          {% for extras in kamer.extra %}
+              <p class="card-text">{{ extras.omschrijving|length > 60 ? extras.omschrijving|slice(0, 60) ~ '...' : extras.omschrijving }}</p>
+              <h5 class="pricing-card-title">€ {{ extras.meerprijs }} <small class="text-muted">/ one time payment</small></h5>
+          {% endfor %}
+              <p class="card-text">{{ kamer.soort }}</p>
+              <a class="btn btn-outline-secondary" href="{{ path('fos_user_security_login') }}">Book</a>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -20,6 +20,7 @@ class SoortController extends AbstractController
      */
     public function index(SoortRepository $soortRepository): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
         return $this->render('soort/index.html.twig', [
             'soorts' => $soortRepository->findAll(),
         ]);

@@ -20,6 +20,7 @@ class BetaalController extends AbstractController
      */
     public function index(BetaalRepository $betaalRepository): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
         return $this->render('betaal/index.html.twig', [
             'betaals' => $betaalRepository->findAll(),
         ]);

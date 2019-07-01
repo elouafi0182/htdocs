@@ -20,6 +20,8 @@ class ImageController extends AbstractController
      */
     public function index(ImageRepository $imageRepository): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
+        
         return $this->render('image/index.html.twig', [
             'images' => $imageRepository->findAll(),
         ]);
