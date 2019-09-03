@@ -1,30 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reserveringen index{% endblock %}
+{% block title %}reserveringen index{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>Reserveringen index</h1>
+    <h1>reserveringen index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>CheckinDate</th>
-                <th>CheckoutDate</th>
-                <th>Betaalid</th>
-                <th>Betaalmethode</th>
+                <th>Check in</th>
+                <th>Check Out</th>
+                <th>User<th>
+                <th>Room<th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for reserveringen in reserveringens %}
+        {% for reserveringen in reserveringen %}
             <tr>
                 <td>{{ reserveringen.id }}</td>
-                <td>{{ reserveringen.checkinDate ? reserveringen.checkinDate|date('Y-m-d') : '' }}</td>
-                <td>{{ reserveringen.checkoutDate ? reserveringen.checkoutDate|date('Y-m-d') : '' }}</td>
-                <td>{{ reserveringen.betaalid }}</td>
-                <td>{{ reserveringen.betaalmethode }}</td>
+                <td>{{ reserveringen.checkin ? reserveringen.checkin|date('Y-m-d') : '' }}</td>
+                <td>{{ reserveringen.checkOut ? reserveringen.checkOut|date('Y-m-d') : '' }}</td>
+                <td>{{ reserveringen.user }}</td>
+                <td>{{ reserveringen.kamer }}</td>
                 <td>
                     <a href="{{ path('reserveringen_show', {'id': reserveringen.id}) }}">show</a>
                     <a href="{{ path('reserveringen_edit', {'id': reserveringen.id}) }}">edit</a>
@@ -32,12 +31,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('reserveringen_new') }}">Create new</a>
-    </div>
 {% endblock %}

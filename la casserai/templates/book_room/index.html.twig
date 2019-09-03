@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book A Room!!!{% endblock %}
+
+{% block body %}
+<style>
+</style>
+<br />
+  <div class="container">
+   {{ form_start(form) }}
+       <div class="my-custom-class-for-errors">
+           {{ form_errors(form) }}
+           {{ form_row(form._token) }}
+       </div>
+       <div class="row">
+           <div class="col">
+               {{ form_row(form.checkin, {'attr': {'class': 'form'} }) }}
+           </div>
+           <div class="col">
+               {{ form_row(form.checkOut, {'attr': {'class': 'form'}}) }}
+           </div>
+       </div>
+   {{ form_end(form) }}
+   </div>
+{% endblock %}

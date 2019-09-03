@@ -3,8 +3,7 @@
 {% block title %}Reserveringen{% endblock %}
 
 {% block body %}
-    <h1>Reserveringen</h1>
-<div class="container">
+    <h1>Reservations</h1>
 
     <table class="table">
         <tbody>
@@ -13,20 +12,12 @@
                 <td>{{ reserveringen.id }}</td>
             </tr>
             <tr>
-                <th>CheckinDate</th>
-                <td>{{ reserveringen.checkinDate ? reserveringen.checkinDate|date('Y-m-d') : '' }}</td>
+                <th>Checkin</th>
+                <td>{{ reserveringen.checkin ? reserveringen.checkin|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>CheckoutDate</th>
-                <td>{{ reserveringen.checkoutDate ? reserveringen.checkoutDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Betaalid</th>
-                <td>{{ reserveringen.betaalid }}</td>
-            </tr>
-            <tr>
-                <th>Betaalmethode</th>
-                <td>{{ reserveringen.betaalmethode }}</td>
+                <th>CheckOut</th>
+                <td>{{ reserveringen.checkOut ? reserveringen.checkOut|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>
     </table>
@@ -36,5 +27,4 @@
     <a href="{{ path('reserveringen_edit', {'id': reserveringen.id}) }}">edit</a>
 
     {{ include('reserveringen/_delete_form.html.twig') }}
-    </div>
 {% endblock %}

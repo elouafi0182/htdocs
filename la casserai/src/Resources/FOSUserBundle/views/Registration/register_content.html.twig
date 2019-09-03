@@ -3,8 +3,7 @@
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
     <div>
-       <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'registration.submit'|trans }}" />
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+       <input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'registration.submit'|trans }}" />
     </div>
     </div>
 {{ form_end(form) }}
