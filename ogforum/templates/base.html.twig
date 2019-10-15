@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <title>{% block title %}Forum{% endblock %}</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="">
+            <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+            <meta name="generator" content="Jekyll v3.8.5">
+            <title>Forum</title>
+
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            {% block stylesheets %}{% endblock %}
+            <!-- Custom styles for this template -->
+            <link href="carousel.css" rel="stylesheet">
+        </head>
+        <style>
+            .btn-primary{ 
+                background-color:#48e88d!important;
+                border: none!important;    
+            }
+            #cke_14{ 
+                display:none;
+            }
+        </style>
+    <body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('default') }}">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('topic') }}">Topics</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('categories') }}">Categories</a>
+                    </li>
+                    {# <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('product_index') }}">Product</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('category_index') }}">Category</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('image_index') }}">Image</a>
+                    </li> #}
+                </ul>
+            </div>
+            <div class="mx-auto order-0">
+                <a class="navbar-brand mx-auto" href="{{ path('default') }}">Forum</a>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Panel</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown05">
+                    <a class="dropdown-item" href="{{ path('user_index') }}">Users</a>
+                    <a class="dropdown-item" href="{{ path('post_index') }}">Posts</a>
+                    <a class="dropdown-item" href="{{ path('category_index') }}">Categories</a>
+                    <a class="dropdown-item" href="{{ path('reaction_index') }}">Reactions</a>
+                </div>    
+                </li>
+                {% endif %}
+                {% if app.user %}
+                    {# <li class="nav-item">
+                            <a class="nav-link" href="{{ path("invoice_index") }}">Your Invoices</a>
+                        </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="{{ path("cart") }}">Cart</a>
+                        </li>     #}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("fos_user_profile_show") }}">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("fos_user_security_logout") }}">Logout <b>{{ app.user }}</b></a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("fos_user_registration_register") }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("fos_user_security_login") }}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </ul>
+    </div>
+</nav>
+    </header>
+        <div class="container">
+        {% block body %}
+        {% endblock %}
+        {% block content %}
+            {% block fos_user_content %}{% endblock %}
+        {% endblock %}
+        </div>
+          <footer class="container text-center">
+            <p>© Forum 2019 <a href="https://policies.google.com/" '>Privacy</a> · </p>
+            </footer>
+        {% block javascripts %}
+        {% endblock %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="{{ asset('bundles\pages\ckeditor/ckeditor.js') }}"></script>
+    </body>
+</html>

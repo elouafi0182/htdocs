@@ -22,12 +22,14 @@
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
-                <td>{{ product.image }}</td>
+               {% for image in product.image %}
+                    <td><img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.imageName }}" style="width:150px;height:170px;"></td>
+                {% endfor %}
                 <td>{{ product.description }}</td>
                 <td>
                     <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
                     <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
-                    <a href="{{ path('product_tocart', {'id': product.id}) }}">add to cart</a>
+                    <a href="{{ path('product_add', {'id': product.id}) }}">add</a>
                 </td>
             </tr>
         {% else %}
@@ -37,6 +39,6 @@
         {% endfor %}
         </tbody>
     </table>
-
     <a href="{{ path('product_new') }}">Create new</a>
 {% endblock %}
+

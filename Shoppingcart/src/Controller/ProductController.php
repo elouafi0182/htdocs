@@ -1,27 +1,26 @@
 <?php
-
 namespace App\Controller;
-
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Form\CheckoutType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use Swift_Mailer;
+use Swift_Message;
 /**
  * @Route("/product")
  */
 class ProductController extends AbstractController
 {
     private $session;
-
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;
     }
-
     /**
      * @Route("/", name="product_index", methods={"GET"})
      */
@@ -31,7 +30,27 @@ class ProductController extends AbstractController
             'products' => $productRepository->findAll(),
         ]);
     }
-
+    /**
+     * @Route("/pay", name="checkout", methods={"GET", "POST"})
+     */
+    public function checkout(Swift_Mailer $mailer, Request $response)
+    {
+      $getCart = $this->session->get('cart', []);
+      $message = (new Swift_Message())
+          ->setSubject('Here should be a subject')
+          ->setFrom(['support@mailtrap.io'])
+          ->setTo(['newuser@example.com' => 'New Mailtrap user'])
+          ->setBody(
+            $this->renderView('product/add.html.twig',
+            ['cart' => $getCart]),
+            'text/html'
+          );
+      $mailer->send($message);
+      $form = $this->createForm(CheckoutType::class);
+      return $this->render('product/checkout.html.twig', [
+        'Checkout_form' =>$form->createView(),
+      ]);
+    }
     /**
      * @Route("/new", name="product_new", methods={"GET","POST"})
      */
@@ -40,21 +59,17 @@ class ProductController extends AbstractController
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
-
             return $this->redirectToRoute('product_index');
         }
-
         return $this->render('product/new.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="product_show", methods={"GET"})
      */
@@ -64,7 +79,6 @@ class ProductController extends AbstractController
             'product' => $product,
         ]);
     }
-
     /**
      * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
      */
@@ -72,19 +86,15 @@ class ProductController extends AbstractController
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('product_index');
         }
-
         return $this->render('product/edit.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="product_delete", methods={"DELETE"})
      */
@@ -95,27 +105,32 @@ class ProductController extends AbstractController
             $entityManager->remove($product);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('product_index');
     }
-          /**
-     * @Route("/cart/{id}", name="product_tocart", methods={"GET","POST"})
+    /**
+     * @Route("/add/{id}", name="product_add", methods={"GET", "POST"})
      */
-    public function AddToCart($id)
+    public function addToCart(Product $product)
     {
-        $getCart = $this->session->get('Cart');
-
-        if(isset($getCart[$id])){
-            $getCart[$id]['array']++;
-        }
-        else{
-            $getCart[$id] = array('array' => 1);
-        }
-        $this->session->set('Cart', $getCart);
-        var_dump($this->session->get('Cart'));
-        return $this->render('product/cart.html.twig');
+      $getCart = $this->session->get('cart', []);
+      if(isset($getCart[$product->getId()])) {
+        $getCart[$product->getId()]['quantity']++;
+      } else {
+        $getCart[$product->getId()] = array(
+          'quantity' => 1,
+          'name' => $product->getName(),
+          'price' => $product->getPrice(),
+          'id' => $product->getId());
+      }
+      // foreach($getCart as $id => $details)
+      // {
+      //   $total = $total + ($getCart[$id]['quantity'] * $getCart[$id]['price']);
+      // }
+      $this->session->set('cart', $getCart);
+      return $this->render('product/add.html.twig',[
+        'product' => $getCart[$product->getId()]['name'],
+        'quantity' => $getCart[$product->getId()]['quantity'],
+        'cart' => $getCart
+      ]);
     }
-    
 }
-
-
